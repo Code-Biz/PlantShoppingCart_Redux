@@ -260,6 +260,7 @@ const handlePlantsClick = (e) => {
                     </a>
                 </div>
               
+              
             </div>
             <div style={styleObjUl}>
                 <div> <a href="#" onClick={(e)=>handlePlantsClick(e)} style={styleA}>Plants</a></div>
@@ -268,6 +269,25 @@ const handlePlantsClick = (e) => {
         </div>
         {!showCart? (
         <div className="product-grid">
+            {/* you can consider category as an array item with elements category and plant where cetegory is a string and plant is an array of objects */}
+            {
+                plantsArray.map((category,index)=>{
+                    <div key={index}>
+                        <h1><div>{category.category}</div></h1>
+                        <div className='product-list'>
+                            {category.plants.map((plant,plantIndex)=>{
+                                <div className='product-card' key={plantIndex}>
+                                    <img className='product-image' alt={plant.name} src={plant.image}/>
+                                    <div className="product-title">{plant.name}</div>
+                                    <button  className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
+
+
+                                </div>                            })}
+
+                        </div>
+                    </div>
+                })
+            }
 
 
         </div>
